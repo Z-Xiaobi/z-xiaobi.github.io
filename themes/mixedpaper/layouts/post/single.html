@@ -1,0 +1,69 @@
+{{ define "main" }}
+<section id="main">
+  <article class="post content">
+
+    <h2 class="title">{{ .Title }}</h2>
+
+    <div class="upinfo">
+
+      <time datetime={{ .Date.Format "2006-01-02T15:04:05Z0700" }} class="date">{{ .Date.Format "January 2, 2006" }}</time>
+
+      <i class="fa fa-tags"></i>
+      <!-- {{ delimit .Params.tags "|" }} -->
+      {{ with .Params.tags }}
+        <ul class="tags">
+        {{ range . }}
+          <li> <a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a> </li>
+        {{ end }}
+        </ul>
+      {{ end }}
+      <i class="fa fa-bars"></i>
+      {{ with .Params.series }}
+        <ul class="series">
+        {{ range . }}
+          <li> <a href="{{ "series" | absURL }}/{{ . | urlize }}">{{ . }}</a> </li>
+        {{ end }}
+      </ul>
+      {{ end }}
+      <i class="fa fa-folder"></i>
+      {{ with .Params.categories }}
+      <ul class="categories">
+        {{ range . }}
+          <li><a href="{{ "categories" | absURL}}/{{ . | urlize }}">{{ . }}</a> </li>
+        {{ end }}
+      </ul>
+      {{ end }}
+    </div>
+
+
+    <div class="post_content">
+      {{ .Content }}
+    </div>
+
+
+    <div class="tailinfo post_meta">
+      {{ with .Site.Params.postLicense }}
+        <div class="license">
+          <p>{{ . | markdownify }}</p>
+        </div>
+      {{ end }}
+    </div>
+    <div class="clearfix"></div>
+
+  </article>
+
+
+
+  {{ if not (eq .Type "section") }}
+    <div class="other_posts">
+      {{ if .PrevInSection }}
+      <a href="{{.PrevInSection.Permalink}}" class="prev">{{ .PrevInSection.LinkTitle }}</a>
+      {{ end }}
+      {{ if .NextInSection }}
+      <a href="{{.NextInSection.Permalink}}" class="next">{{ .NextInSection.LinkTitle }}</a>
+      {{ end }}
+    </div>
+    {{ partial "comments.html" . }}
+  {{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,152 @@
+#### Theme: mixedpaper
+
+### Basic Configuration
+baseURL = "https://z-xiaobi.github.io/"
+# languageCode = "en-us"
+languageCode = "zh-cn"
+title = "图码图 Tumatu's Personal Blog"
+theme = "mixedpaper"
+
+
+### Additional Settings
+
+## Construction Setting
+buildDrafts = false # 在构建的时候是否需要将草稿打包进去,默认 false
+buildFuture = false # 包含将要发布的日期（一般不用），默认 false
+
+# config：修改默认配置文件路径（config.yaml、json、toml|）
+# my project is using config.toml, so no need to use these two settings
+# config = "config.toml"
+# metaDataFormat = "toml"
+
+
+
+
+## Author
+[author]
+name = "tumatu"
+
+## Menu
+[[menu.main]]
+  identifier = "about"
+  name = "关于 About"
+  url = "/about/"
+  weight = 1
+[[menu.main]]
+  identifier = "tags"
+  name = "标签 Tags"
+  url = "/tags/"
+  weight = 2
+[[menu.main]]
+  identifier = "archives"
+	name = "归档 Archives"
+	url = "/archives/"
+  weight = 3
+
+## Tags
+# 分类的配置：在 Hugo 中分类用 taxonomies表示，默认包含（tags、categories），
+# 我们也可以增加一个 series.
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+
+[params]
+# Blog description at the top of the homepage. Supports markdown.
+description = "."
+showReadMore = false
+mainSections = [
+	"post",
+]
+listPaginate = 20 # paginate of archives, tags and categories
+postLicense = ""
+
+# Comments (Supported Disqus and Valine.)
+[params.comment]
+type = "none"
+
+disqusShortname = ""  # Add your Disqus shortname here.
+[params.comment.valine] # Valine service
+appid = "your-appid"
+appkey = "your-appkey"
+placeholder = "enjoy~"
+avatar = "mm"
+pageSize = 10.0
+visitor = false
+recordIP = true
+highlight = true
+meta = "nick,mail"
+requiredFields = "nick,mail"
+
+## Frontend Layouts
+paginate = 5 # Set the number of posts to show before overflowing to the next page.
+paginatePath = "page" # 分页的路径关键词。
+
+summaryLength = 100 # Configure how long the post summary should be on the homepage.
+hasCJKLanguage = true # automatically check whether contains Chinese and other languages
+
+# 配置 highlight 显示的样式。一般情况下还是建议去更换 css 文件，在 head.html 中查找替换。
+# https://gohugo.io/content-management/syntax-highlighting/
+# pygmentsUseClasses = true # Enable theme-defined highlighting style
+
+# Hugo 默认会把 url 中的大写字符转为小写
+disablePathToLower = true # keep the path string  case sensitive
+# Hugo 默认会把Taxonomy（categories,tags,series）名称转为小写
+preserveTaxonomyNames = true # keep the tag name  case sensitive
+
+
+
+
+# hrefTargetBlank：在文章内生成的超链接是否打开新的页面，建议设置成 true.
+# Blackfriday was replaced by GoldMark
+# [Blackfriday]
+#     hrefTargetBlank = true
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = false
+      xhtml = false
+
+
+
+googleAnalytics = "xxxxx" # googleAnalytics 设置一个 google 的统计配置 id 即可。
+
+
+
+
+
+## Privacy configurations: https://gohugo.io/about/hugo-and-gdpr/
+[privacy]
+[privacy.disqus]
+disable = false
+[privacy.googleAnalytics]
+anonymizeIP = true
+disable = false
+respectDoNotTrack = false
+useSessionStorage = false
+[privacy.instagram]
+disable = false
+simple = false
+[privacy.twitter]
+disable = false
+enableDNT = false
+simple = false
+[privacy.vimeo]
+disable = false
+simple = false
+[privacy.youtube]
+disable = false
+privacyEnhanced = true
