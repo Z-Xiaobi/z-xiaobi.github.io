@@ -13,6 +13,7 @@ body {
 }
 
 body {
+  // 文字color
   color: rgba(0, 0, 0, 0.7);
   background: #f8f8f8;
   overflow-x: hidden;
@@ -44,7 +45,9 @@ button {
 }
 
 ::selection {
-  background: #58b798;
+  // background: #58b798;
+  // background: rgb(192, 202, 116); // 绿豆糕
+  background: rgb(128,135,77);
   color: #fff;
 }
 

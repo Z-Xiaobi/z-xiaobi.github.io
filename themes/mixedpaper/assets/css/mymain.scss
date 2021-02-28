@@ -11,7 +11,8 @@ body {
 
 /* Header */
 #header {
-  background-color: rgb(66, 133, 244);
+  // background-color: rgb(66, 133, 244);
+  background-color: #528ad4;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   width: 100%;
@@ -21,7 +22,9 @@ body {
     padding: 0 0 0.5rem 0;
 
     a {
-      color: #fff;
+      // color: #fff;
+      color: #F8F8F8;
+      // color: #CCFFFF;
     }
 
     h1.sitetitle {
@@ -47,6 +50,7 @@ body {
     }
   }
 }
+
 
 /* Navigation Menu */
 .navbar {
@@ -109,11 +113,26 @@ body {
   width: 100%;
   text-align: center;
   padding: 1.5em 0;
-  background-color: #5c5757;
-  color: #e5e5e5;
-  border-top: 5px solid #ee6e73;
+  // background-color: #5c5757;
+  // background-color: #383838;
+  background-color: #484848;
+  // color: #e5e5e5;
+  color: #F0F0F0;
+  // border-top: 5px solid #ee6e73;
   margin-top: 2em;
   position: relative;
+
+  // add shadow
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  width: 100%;
+
+  // mouse selection
+  ::selection {
+    // background: #3366CC;
+    background: #003300;
+    color: #fff;
+  }
 
   p {
     padding: 1px 0;
@@ -311,6 +330,8 @@ body {
 /* Content */
 #main {
   margin: 0 auto;
+  // margin: up right bottom left;
+  // margin: 0 1em 0 1em;
   // max-width: 1280px; // want to give a space for catalogue
   max-width: 1024px;
   width: 100%;
@@ -326,6 +347,13 @@ body {
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
     0px 1px 3px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   background: #fff;
+}
+
+// add a catalogue
+.post_toc {
+  margin: auto;
+  padding: 0.5em 0 0 2em;
+  display: inline-block;
 }
 
 .other_posts {
@@ -375,12 +403,96 @@ body {
     .title {
       border-width: 1px;
     }
+    // ------------------------------------------
+    /* Add to format the home page's post list */
+    .list_title { // title in the list of posts
+      font-size: 1.5em;
+      display: inline-block;
+    }
+    .list_info{
+      font-size: 1.0em;
+      display: inline-block;
+      text-align: right;
+      // float: right;
+      // position: absolute;
+      // 上右下左
+      // margin: 0 1em 1em auto;
+      .list_date {
+        color: #404040;
+        font-weight: bold;
+      }
+    }
+
+    // ------------------------------------------
   }
 
   ul,
   li {
     padding: 0;
     list-style: none;
+  }
+  /* Add more blocks*/
+  // eg: how many tags in total
+  .term_info {
+    font-weight: bold;
+    display: inline-block;
+    div.term_num {
+      display: inline-block;
+      color: #800000;
+    }
+  }
+  // eg: order by alphabet or weight
+  .term_order_dropdown {
+
+    display: inline-block;
+    float: right;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+
+    /* 在鼠标移上去后显示下拉菜单 */
+    &:hover .dropdown-content {
+        display: block;
+    }
+    &:hover .dropbtn {
+      background-color: #F8F8F8;
+    }
+
+    .dropbtn {
+      background-color: #FFFFFF;
+      color: #484848;
+      padding: 0.5em;
+      border:solid 0.2em #4d4e53;
+      // border-radius: border-top-left-radius, border-top-right-radius, border-bottom-right-radius and border-bottom-left-radius
+      border-radius: 0.6em;
+      // 去掉button点击出现蓝色边框
+      &:focus {
+        outline:none;
+      }
+      // 这个不能保证在选下拉菜单内容时仍然变色
+      // &:hover {
+      //   background-color: #F8F8F8;
+      // }
+
+    }
+    /* 下拉内容 (默认隐藏) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 80px;
+        // box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+        /* 下拉菜单的链接 */
+        a {
+            color: black;
+            padding: 0.5em 0.5em;
+            text-decoration: none;
+            display: block;
+            /* 鼠标移上去后修改下拉菜单链接颜色 */
+            &:hover {background-color: #f1f1f1}
+        }
+    }
+
   }
 
   .listing {
@@ -421,11 +533,17 @@ body {
       display: inline-block;
       margin: 0.2em 0.2em;
       border: 1px dashed #ddd;
+      // make tags bold
+      font-weight: bold;
       a {
         padding: 0.5em 0.5em;
       }
     }
   }
+
+
+
+
 }
 
 /* Archive */
@@ -454,7 +572,7 @@ body {
 
 /* Post */
 .post {
-  .title {
+  .title { // title in the post detail page
     // border-bottom: 3px solid rgba(0, 0, 0, 0.1);
     color: #f47f5a;
     // font-size: 2em;
@@ -462,20 +580,22 @@ body {
     font-weight: 500;
     // margin: 0.8em 0;
     // margin: top right bottom left
+    // margin: 0.5em 0 -0.1em 0;
+    text-align: center;
     margin: 0.5em 0 -0.1em 0;
 
-    a {
-      color: #009688;
-      border: 0;
-    }
+    // a {
+    //   color: #009688;
+    //   border: 0;
+    // }
   }
 
-  .date {
+  .date { // data in the post detail
     // color: #999;
     color: #404040;
     // font-style: italic;
     // float: right;
-    // add a space betten date information and tags information
+    // add a space between date information and tags information
     margin-right: 0.8em;
   }
 
@@ -485,6 +605,7 @@ body {
     font-weight: bold;
     // display: inline-block;
     margin-bottom: 2em;
+    text-align: center;
 
     ul.tags {
       padding: 0;
@@ -542,7 +663,7 @@ body {
       }
     }
   }
-}
+
 
   .tailinfo {
     border-top: 3px solid rgba(0, 0, 0, 0.1);
@@ -579,6 +700,7 @@ body {
     //     }
     //   }
 
+}
 
   .summary {
     overflow: hidden;
@@ -695,24 +817,30 @@ body {
     }
 
     h1 {
-      font-size: 1.8em;
+      // font-size: 1.8em;
+      font-size: 2.5em;
     }
 
     h2 {
-      font-size: 1.6em;
+      // font-size: 1.6em;
+      font-size: 2.3em;
     }
 
     h3 {
-      font-size: 1.4em;
+      // font-size: 1.4em;
+      font-size: 2.1em;
     }
 
     h4 {
-      font-size: 1.2em;
+      // font-size: 1.2em;
+      font-size: 2.0em;
+
     }
 
     h5,
     h6 {
-      font-size: 1.1em;
+      // font-size: 1.1em;
+      font-size: 1.8em;
     }
 
     ul {
@@ -793,6 +921,8 @@ body {
 
       p {
         margin: auto;
+        // Add
+        font-size: 1.5em;
       }
     }
 
@@ -1251,10 +1381,10 @@ body {
     visibility: hidden;
   }
 
-  .post_list {
-    .post {
-    }
-  }
+  // .post_list {
+  //   .post {
+  //   }
+  // }
 
   .content {
     margin: 1em auto;
@@ -1263,10 +1393,12 @@ body {
   }
 
   .post {
-    .title {
+    .title { // title in one post detail page
       margin: 0 0 0.8em 0;
       font-size: 1.8em;
+
     }
+
     .date {
       float: none;
     }

@@ -1,0 +1,29 @@
+
+{{ define "main" }}
+<section id="main" class="index">
+  <div class="post_list container">
+    {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+    {{ range $paginator.Pages }}
+    <article class="post content">
+
+      <!-- <h3 class="title"> -->
+      <h3 class="list_title">
+        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+      </h3>
+
+      <div class="post_content summary">
+        {{ .Summary }}
+        {{ if .Truncated }}
+          <span class="hellip">&hellip;</span>
+        {{ end }}
+      </div>
+
+      <div class="list_info">
+        Posted on <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" class="list_date">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
+      </div>
+    </article>
+    {{ end }}
+    {{ partial "pagination.html" . }}
+  </div>
+</section>
+{{ end }}

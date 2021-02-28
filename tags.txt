@@ -1,0 +1,5 @@
+Jot down the tags, series, and categories that I used.
+
+tags: ["binary tree", "queue"]
+series: ["data structure"]
+categories: ["Algorithms"]
